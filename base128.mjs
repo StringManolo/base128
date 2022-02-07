@@ -45,7 +45,7 @@ const encodeBase128 = (text, isBin) => {
 }
 
 
-const decodeBase128 = (text) => {
+const decodeBase128 = (text, isBin) => {
   const binToText = (bin) => {
     let res = "";
     const bytes = bin.match(/.{1,8}/g);
@@ -82,18 +82,9 @@ const decodeBase128 = (text) => {
   }
 
 
-  return binToText(sevenBits.join(""));
+  return isBin ? sevenBits.join("") : binToText(sevenBits.join(""));
 
 }
-
-/*
-const message = "Hello";
-const b128 = encodeBase128(message);
-console.log(b128);
-
-const decoded = decodeBase128(b128);
-console.log(decoded);
-*/
 
 export {
   encodeBase128,
